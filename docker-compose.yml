@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  radarr:
+    container_name: radarr
+    image: lscr.io/linuxserver/radarr:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuching
+    volumes:
+      - /data/radarr/data:/config
+      - /data/radarr/movies:/movies #optional
+      - /data/radarr/downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
